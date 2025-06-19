@@ -92,6 +92,54 @@
       font-weight: bold;
     }
 
+    .calculator {
+      max-width: 400px;
+      margin: 40px auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .calculator h2 {
+      text-align: center;
+      color: #0066ff;
+    }
+
+    .calculator input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .calculator button {
+      flex: 1;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .calculator .button-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .calculator #result {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #0033cc;
+    }
+
     footer {
       background: #222;
       color: #ccc;
@@ -113,6 +161,14 @@
       .menu-item {
         padding: 0.8rem 1.5rem;
         font-size: 1rem;
+      }
+
+      .calculator .button-row {
+        flex-direction: column;
+      }
+
+      .calculator button {
+        width: 100%;
       }
     }
   </style>
@@ -139,12 +195,45 @@
         <div class="card-price">₹499</div>
       </div>
     </div>
-    <!-- Add more products as needed -->
+  </div>
+
+  <div class="calculator">
+    <h2>🧮 Calculator</h2>
+    <input type="number" id="num1" placeholder="Enter first number">
+    <input type="number" id="num2" placeholder="Enter second number">
+    <div class="button-row">
+      <button onclick="calculate('+')">+</button>
+      <button onclick="calculate('-')">−</button>
+      <button onclick="calculate('*')">×</button>
+      <button onclick="calculate('/')">÷</button>
+    </div>
+    <div id="result">Result: --</div>
   </div>
 
   <footer>
     📞 Customer Support: <strong>1800-123-4567</strong>
   </footer>
+
+  <script>
+    function calculate(operator) {
+      const num1 = parseFloat(document.getElementById("num1").value);
+      const num2 = parseFloat(document.getElementById("num2").value);
+      let result = '';
+
+      if (isNaN(num1) || isNaN(num2)) {
+        result = "Please enter both numbers";
+      } else {
+        switch (operator) {
+          case '+': result = num1 + num2; break;
+          case '-': result = num1 - num2; break;
+          case '*': result = num1 * num2; break;
+          case '/': result = num2 !== 0 ? (num1 / num2).toFixed(2) : "Cannot divide by 0"; break;
+        }
+      }
+
+      document.getElementById("result").innerText = "Result: " + result;
+    }
+  </script>
 
 </body>
 </html>
