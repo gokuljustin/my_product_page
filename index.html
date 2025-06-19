@@ -258,19 +258,14 @@
 
       fetch('https://script.google.com/macros/s/AKfycbyBqtvl-rP_cvui3xlf9nDhmSSteBLKnfZI_FIGSM1fIfb4atkgpXm_DY38YJyqMQU1/exec', {
         method: 'POST',
+        mode: 'no-cors',
         body: JSON.stringify(formData),
         headers: { 'Content-Type': 'application/json' }
       })
-      .then(response => response.json())
-      .then(data => {
-        if (data.result === "success") {
-          status.textContent = "Thank you! We'll contact you soon.";
-          status.style.color = "green";
-          form.reset();
-        } else {
-          status.textContent = "Something went wrong. Please try again.";
-          status.style.color = "red";
-        }
+      .then(() => {
+        status.textContent = "Thank you! We'll contact you soon.";
+        status.style.color = "green";
+        form.reset();
       })
       .catch(error => {
         status.textContent = "Error: " + error;
