@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Smart Product Store</title>
+  <title>Sangeetha Gokul Store</title>
   <style>
     body {
       margin: 0;
@@ -13,13 +13,38 @@
     }
 
     header {
-      background: linear-gradient(to right, #0066ff, #0099ff);
+      background: linear-gradient(to right, #6a11cb, #2575fc);
       color: white;
       padding: 1.5rem;
       text-align: center;
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: bold;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem 1rem;
+      background: #ffffff;
+    }
+
+    .menu-item {
+      background: #eef3ff;
+      border-radius: 12px;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      color: #0033cc;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: all 0.2s ease-in-out;
+    }
+
+    .menu-item:hover {
+      background-color: #d0e1ff;
+      transform: scale(1.05);
     }
 
     .container {
@@ -82,11 +107,12 @@
 
     @media (max-width: 600px) {
       header {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
       }
 
-      .card-body {
-        padding: 1rem;
+      .menu-item {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
       }
     }
   </style>
@@ -94,41 +120,26 @@
 <body>
 
   <header>
-    🛒 Smart Product Store
+    🛒 Sangeetha Gokul Store
   </header>
+
+  <div class="menu">
+    <div class="menu-item">Grocery</div>
+    <div class="menu-item">Dress</div>
+    <div class="menu-item">Milk</div>
+    <div class="menu-item">Electronics</div>
+    <div class="menu-item">Mango Mani</div>
+  </div>
 
   <div class="container">
     <div class="card">
-      <img src="https://via.placeholder.com/300x180.png?text=Smart+Watch" alt="Smart Watch">
+      <img src="https://via.placeholder.com/300x180.png?text=Product+1" alt="Product 1">
       <div class="card-body">
-        <div class="card-title">Smart Watch</div>
-        <div class="card-price">₹1,999</div>
+        <div class="card-title">Sample Product</div>
+        <div class="card-price">₹499</div>
       </div>
     </div>
-
-    <div class="card">
-      <img src="https://via.placeholder.com/300x180.png?text=Wireless+Earbuds" alt="Earbuds">
-      <div class="card-body">
-        <div class="card-title">Wireless Earbuds</div>
-        <div class="card-price">₹2,499</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://via.placeholder.com/300x180.png?text=Fitness+Tracker" alt="Fitness Tracker">
-      <div class="card-body">
-        <div class="card-title">Fitness Tracker</div>
-        <div class="card-price">₹999</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://via.placeholder.com/300x180.png?text=Bluetooth+Speaker" alt="Bluetooth Speaker">
-      <div class="card-body">
-        <div class="card-title">Bluetooth Speaker</div>
-        <div class="card-price">₹1,499</div>
-      </div>
-    </div>
+    <!-- Add more products as needed -->
   </div>
 
   <footer>
