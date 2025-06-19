@@ -210,6 +210,17 @@
     <div id="result">Result: --</div>
   </div>
 
+  <!-- 🌟 Interest Form Section -->
+  <div style="max-width: 400px; margin: 40px auto; background: #ffffff; padding: 20px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);">
+    <h2 style="text-align: center; color: #28a745;">Interested to Learn More?</h2>
+    <form id="interestForm">
+      <input type="text" name="name" placeholder="Your Name" required style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #ccc;">
+      <input type="tel" name="mobile" placeholder="Your Mobile Number" required pattern="[0-9]{10}" style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ccc;">
+      <button type="submit" style="width: 100%; padding: 12px; background-color: #28a745; color: white; border: none; border-radius: 8px; font-size: 1rem;">Submit</button>
+      <p id="formStatus" style="margin-top: 10px; text-align: center; font-weight: bold;"></p>
+    </form>
+  </div>
+
   <footer>
     📞 Customer Support: <strong>1800-123-4567</strong>
   </footer>
@@ -233,6 +244,39 @@
 
       document.getElementById("result").innerText = "Result: " + result;
     }
+
+    const form = document.getElementById('interestForm');
+    const status = document.getElementById('formStatus');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const formData = {
+        name: form.name.value,
+        mobile: form.mobile.value
+      };
+
+      fetch('https://script.google.com/macros/s/AKfycbyh-L3Snz-eN8VX1luKjlFaeEKKTW-g4aeDrEoTx8WEuppj9vtWRLA6Kg_BcLodFBcu/exec', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.result === "success") {
+          status.textContent = "Thank you! We'll contact you soon.";
+          status.style.color = "green";
+          form.reset();
+        } else {
+          status.textContent = "Something went wrong. Please try again.";
+          status.style.color = "red";
+        }
+      })
+      .catch(error => {
+        status.textContent = "Error: " + error;
+        status.style.color = "red";
+      });
+    });
   </script>
 
 </body>
